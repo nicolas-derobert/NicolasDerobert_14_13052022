@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "AAGA,AAAA,QAAQ,CAAC;EACR,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;CACtB;;AACD,MAAM,EAAE,SAAS,EAAE,KAAK;EACvB,AAAA,QAAQ,CAAC;IACR,cAAc,EAAE,GAAG;GACnB",
+    "sources": [
+        "Gallery.scss",
+        "../../assets/Styles/variables.scss",
+        "../../assets/Styles/mixin.scss"
+    ],
+    "names": [],
+    "file": "Gallery.css"
+}

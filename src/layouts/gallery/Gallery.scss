@@ -1,0 +1,12 @@
+@import "../../assets/Styles/variables.scss";
+@import "../../assets/Styles/mixin.scss";
+
+.gallery {
+	display: flex;
+	flex-direction: column;
+}
+@media (min-width: 920px) {
+	.gallery {
+		flex-direction: row;
+	}
+}

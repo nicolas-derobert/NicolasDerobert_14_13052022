@@ -1,0 +1,9 @@
+@import "../../assets/Styles/variables.scss";
+@import "../../assets/Styles/mixin.scss";
+
+.GlobalLayout {
+	flex: 1;
+	display: flex;
+	flex-flow: column;
+	justify-content: stretch;
+  }
