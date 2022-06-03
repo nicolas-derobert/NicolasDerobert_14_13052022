@@ -8,8 +8,8 @@ function TableRenderer(props) {
 	const employeesArray = useSelector((state) => state.profile.employees);
 	const firstNameProfile = useSelector((state) => state.profile.firstName);
 	console.log(firstNameProfile);
-	const [colDefs, setColDefs] = useState();
-	const [data, setData] = useState();
+	// const [colDefs, setColDefs] = useState();
+	// const [data, setData] = useState();
 	// const [tableDataEmployeesArray, setTableDataEmployeesArray] = useState();
 	const tableDataEmployeesArray = employeesArray.map((o) => ({ ...o }));
 	console.log(tableDataEmployeesArray);
@@ -41,7 +41,7 @@ function TableRenderer(props) {
 	// 		city: "Cruseilles",
 	// 		dateOfBirth: "undefined",
 	// 		department: "undefined",
-	// 		firstName: "Nicolas",
+	// 		firstName: "Nicolas",colDefs
 	// 		lastName: "DEROBERT",
 	// 		startDate: "undefined",
 	// 		state: "undefined",
@@ -73,7 +73,7 @@ function TableRenderer(props) {
 	// ]);
 	// console.log(tableData);
 
-	const [columns, setColumns] = useState([
+	const [columns] = useState([
 		{ title: "First Name", field: "firstName" },
 		{ title: "Last Name", field: "lastName" },
 		{ title: "Start Date", field: "startDate" },

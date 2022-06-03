@@ -1,10 +1,9 @@
-import React, { Fragment, useRef } from "react";
+import React, { Fragment, useRef, useState} from "react";
 // import Jumbotron from "../../components/jumbotron/Jumbotron";
 // import Gallery from "../../layouts/gallery/Gallery";
-import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
-import { CustomMessageModal } from "custom-message-react-modal";
+// import { CustomMessageModal } from "custom-message-react-modal";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import { useDispatch } from "react-redux";
@@ -13,8 +12,6 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 function Home() {
-	const image = "jumbotron-image.jpg";
-	const title = "Chez vous et partout ailleurs";
 	const firstNameInputRef = useRef();
 	const lastNameInputRef = useRef();
 	// const dateOfBirthInputRef = useRef();
@@ -314,7 +311,7 @@ function Home() {
 			})
 		);
 	};
-	const [open, setOpen] = React.useState(false);
+	const [open, setOpen] = useState(false);
 	const handleOpen = () => {
 		setOpen(true);
 		submitHandler();
@@ -368,7 +365,7 @@ function Home() {
 							<Dropdown
 								options={statesOptions}
 								value={defaultStatesOptions}
-								placeholder="Select an option"				
+								placeholder="Select an option"
 								// onChange={setState}
 								onChange={(selection) => setState(selection.value)}
 							/>
@@ -385,15 +382,14 @@ function Home() {
 						placeholder="Select an option"
 						// ref={departmentInputRef}
 						onChange={(selection) => setDepartement(selection.value)}
-						
 					/>
+										<button onClick={handleOpen}>Save</button>
+{/* 
 					<CustomMessageModal
 						isOpen={open}
 						onRequestClose={handleClose}
-						messageToDisplay={"Message to display"}
-					></CustomMessageModal>
+						messageToDisplay={"Message to display2"}></CustomMessageModal> */}
 					{/* <button type="submit">Save</button> */}
-					<button onClick={handleOpen}>Save</button>
 				</div>
 				{/* <div id="confirmation" className="modal">
 					Employee Created!
