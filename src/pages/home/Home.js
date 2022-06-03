@@ -311,12 +311,12 @@ function Home() {
 			})
 		);
 	};
-	const [open, setOpen] = useState(false);
-	const handleOpen = () => {
-		setOpen(true);
-		submitHandler();
-	};
-	const handleClose = () => setOpen(false);
+	// const [open, setOpen] = useState(false);
+	// const handleOpen = () => {
+	// 	setOpen(true);
+	// 	submitHandler();
+	// };
+	// const handleClose = () => setOpen(false);
 
 	return (
 		<Fragment>
@@ -383,7 +383,7 @@ function Home() {
 						// ref={departmentInputRef}
 						onChange={(selection) => setDepartement(selection.value)}
 					/>
-										<button onClick={handleOpen}>Save</button>
+										{/* <button onClick={handleOpen}>Save</button> */}
 {/* 
 					<CustomMessageModal
 						isOpen={open}
