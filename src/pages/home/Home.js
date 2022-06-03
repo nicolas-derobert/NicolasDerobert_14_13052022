@@ -9,24 +9,24 @@ import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import { useDispatch } from "react-redux";
 import { authProfile } from "../../store/profile";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Home() {
 	const image = "jumbotron-image.jpg";
 	const title = "Chez vous et partout ailleurs";
 	const firstNameInputRef = useRef();
 	const lastNameInputRef = useRef();
-	const dateOfBirthInputRef = useRef();
-	const startDateInputRef = useRef();
-	const departmentInputRef = useRef();
+	// const dateOfBirthInputRef = useRef();
+	// const startDateInputRef = useRef();
+	// const departmentInputRef = useRef();
 	const streetInputRef = useRef();
 	const cityInputRef = useRef();
-	const stateInputRef = useRef();
+	// const stateInputRef = useRef();
 	const zipCodeInputRef = useRef();
 	const dispatch = useDispatch();
-	const [startDate, setStartDate] = useState();
-	const [startDateOfBirth, setStartDateOfBirth] = useState();
 
+	const employeesArray = useSelector((state) => state.profile.employees);
 	const states = [
 		{
 			name: "Alabama",
@@ -276,29 +276,49 @@ function Home() {
 		"Legal",
 	];
 	const defaultStatesOptions = statesOptions[0];
-	console.log(defaultStatesOptions)
 	const defaultDepartementOptions = departmentOptions[0];
+	const [startDate, setStartDate] = useState();
+	const [startDateOfBirth, setStartDateOfBirth] = useState();
+	const [state, setState] = useState(defaultStatesOptions);
+	const [departement, setDepartement] = useState(defaultDepartementOptions);
 	const submitHandler = (event) => {
-		console.log("essi")
+		console.log("essi");
+		console.log(departement);
+		console.log(state);
+		const employee = {
+			firstName: `${firstNameInputRef.current.value}`,
+			lastName: `${lastNameInputRef.current.value}`,
+			dateOfBirth: `${startDateOfBirth.toLocaleDateString("fr")}`,
+			startDate: `${startDate.toLocaleDateString("fr")}`,
+			department: `${departement}`,
+			street: `${streetInputRef.current.value}`,
+			city: `${cityInputRef.current.value}`,
+			state: `${state}`,
+			zipCode: `${zipCodeInputRef.current.value}`,
+		};
+		const employeesNewArray = employeesArray.slice();
+		employeesNewArray.push(employee);
+		console.log(employeesNewArray);
 		dispatch(
 			authProfile.setProfile({
+				employees: employeesNewArray,
 				firstName: `${firstNameInputRef.current.value}`,
-				lastName: `${lastNameInputRef.current.value}`,
-				dateOfBirth: `${dateOfBirthInputRef.current.value}`,
-				startDate: `${startDateInputRef.current.value}`,
-				department: `${departmentInputRef.current.value}`,
-				street: `${streetInputRef.current.value}`,
-				city: `${cityInputRef.current.value}`,
-				state: `${stateInputRef.current.value}`,
-				zipCode: `${zipCodeInputRef.current.value}`,
+				// lastName: `${lastNameInputRef.current.value}`,
+				// dateOfBirth: `${dateOfBirthInputRef.current.value}`,
+				// startDate: `${startDateInputRef.current.value}`,
+				// department: `${departmentInputRef.current.value}`,
+				// street: `${streetInputRef.current.value}`,
+				// city: `${cityInputRef.current.value}`,
+				// state: `${stateInputRef.current.value}`,
+				// zipCode: `${zipCodeInputRef.current.value}`,
 			})
 		);
 	};
 	const [open, setOpen] = React.useState(false);
 	const handleOpen = () => {
 		setOpen(true);
-		submitHandler()
-	}
+		submitHandler();
+	};
 	const handleClose = () => setOpen(false);
 
 	return (
@@ -308,7 +328,7 @@ function Home() {
 					<h1>HRnet</h1>
 				</div>
 				<div className="container">
-					<a href="employee-list.html">View Current Employees</a>
+					<Link to="/employee-list.html">View Current Employees</Link>
 					<h2>Create Employee</h2>
 					<form action="#" id="create-employee" onSubmit={submitHandler}>
 						<label htmlFor="first-name">First Name</label>
@@ -327,7 +347,7 @@ function Home() {
 							id="date-of-birth"
 							selected={startDateOfBirth}
 							onChange={(date) => setStartDateOfBirth(date)}
-							ref={dateOfBirthInputRef}
+							// ref={dateOfBirthInputRef}
 						/>
 						{/* <input id="date-of-birth" type="text" /> */}
 						<label htmlFor="start-date">Start Date</label>
@@ -335,7 +355,7 @@ function Home() {
 							id="start-date"
 							selected={startDate}
 							onChange={(date) => setStartDate(date)}
-							ref={startDateInputRef}
+							// ref={startDateInputRef}
 						/>
 						{/* <input type="text" /> */}
 						<fieldset className="address">
@@ -348,10 +368,10 @@ function Home() {
 							<Dropdown
 								options={statesOptions}
 								value={defaultStatesOptions}
-								placeholder="Select an option"
-								ref={stateInputRef} 
+								placeholder="Select an option"				
+								// onChange={setState}
+								onChange={(selection) => setState(selection.value)}
 							/>
-							{/* <Dropdown disabled onChange={this._onSelect} value={defaultOption} placeholder="Select an option" />; */}
 							<label htmlFor="zip-code">Zip Code</label>
 							<input id="zip-code" type="number" ref={zipCodeInputRef} />
 						</fieldset>
@@ -363,16 +383,17 @@ function Home() {
 						options={departmentOptions}
 						value={defaultDepartementOptions}
 						placeholder="Select an option"
-						ref={departmentInputRef} 
+						// ref={departmentInputRef}
+						onChange={(selection) => setDepartement(selection.value)}
 						
 					/>
-			<CustomMessageModal
-				isOpen={open}
-				onRequestClose={handleClose}
-				messageToDisplay={"Message to display"}
-			></CustomMessageModal>
+					<CustomMessageModal
+						isOpen={open}
+						onRequestClose={handleClose}
+						messageToDisplay={"Message to display"}
+					></CustomMessageModal>
 					{/* <button type="submit">Save</button> */}
-					<button onClick={handleOpen}>Hello</button>
+					<button onClick={handleOpen}>Save</button>
 				</div>
 				{/* <div id="confirmation" className="modal">
 					Employee Created!
