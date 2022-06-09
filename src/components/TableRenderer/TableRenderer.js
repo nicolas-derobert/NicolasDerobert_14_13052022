@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import MaterialTable from "material-table";
-import tableIcons from "./MaterialTableIcons";
+import tableIcons from "../../assets/data/MaterialTableIcons";
 import { useSelector } from "react-redux";
 
 function TableRenderer(props) {
