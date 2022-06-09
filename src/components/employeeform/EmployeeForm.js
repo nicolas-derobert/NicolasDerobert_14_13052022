@@ -143,7 +143,7 @@ function EmployeeForm() {
 			<CustomMessageModal
 				isOpen={open}
 				onRequestClose={handleClose}
-				messageToDisplay={"Message to display2"}
+				messageToDisplay={"Employee created"}
 			></CustomMessageModal>
 		</Fragment>
 	);
