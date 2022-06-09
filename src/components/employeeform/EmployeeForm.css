@@ -1,0 +1,13 @@
+.MuiButton-root, .buttonform {
+  margin: 0.5rem;
+  background-color: #6e8614;
+  padding: 1rem;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  text-decoration: none;
+}
+
+.MuiButton-root:hover, .buttonform:hover {
+  background-color: #91b11b;
+}
+/*# sourceMappingURL=employeeForm.css.map */

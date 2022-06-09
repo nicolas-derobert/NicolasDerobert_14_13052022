@@ -3,8 +3,12 @@ import { useEffect } from "react";
 import MaterialTable from "material-table";
 import tableIcons from "../../assets/data/MaterialTableIcons";
 import { useSelector } from "react-redux";
+import "./Table.css"
+// import "./EmployeesList.css";
 
-function TableRenderer(props) {
+
+
+function Table(props) {
 	const employeesArray = useSelector((state) => state.profile.employees);
 	const firstNameProfile = useSelector((state) => state.profile.firstName);
 	console.log(firstNameProfile);
@@ -88,8 +92,8 @@ function TableRenderer(props) {
 	useEffect(() => {}, []);
 
 	return (
-		<div className="">
-			<div style={{ maxWidth: "80%", margin: "2rem auto" }}>
+		<div className="table">
+			<div style={{ maxWidth: "80%", margin: "0rem auto" }}>
 				<MaterialTable
 					title={props.title}
 					data={tableDataEmployeesArray}
@@ -103,4 +107,4 @@ function TableRenderer(props) {
 		</div>
 	);
 }
-export default TableRenderer;
+export default Table;

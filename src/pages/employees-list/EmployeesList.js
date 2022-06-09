@@ -1,14 +1,17 @@
 import { Fragment } from "react";
-import TableRenderer from "../../components/TableRenderer/TableRenderer";
+import Table from "../../components/table/Table";
 import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+import "./EmployeesList.css";
 
 function EmployeesList() {
 	return (
 		<Fragment>
-			<h1>Current Employees
-			</h1>
-			<TableRenderer title={"Les employés"}></TableRenderer>				<Link to="/"> register New employee</Link>
-
+			<h1>Current Employees</h1>
+			<Table title={"Les employés"}></Table>{" "}
+			<Link to="/">
+				<Button>Register New employee</Button>
+			</Link>
 		</Fragment>
 	);
 }

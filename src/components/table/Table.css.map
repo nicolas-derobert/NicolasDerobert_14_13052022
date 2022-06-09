@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAIA,AAAA,MAAM,CAAA;EACF,SAAS,EAAE,MAAM;CAIpB;;AALD,AAEA,MAFM,CAEN,eAAe,CAAA;EACX,SAAS,EAAE,IAAI;CAClB",
+    "sources": [
+        "Table.scss"
+    ],
+    "names": [],
+    "file": "Table.css"
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../../components/navbar/Navbar";
-import Logo from "../../assets/images/argentBankLogo.png";
+import Logo from "../../assets/images/wealthhealth.jpg";
 import "./Header.css";
 
 function Header() {
@@ -8,9 +8,9 @@ function Header() {
 		<header className="header">
 			<div className="main-nav-logo">
 				<img src={Logo} alt="Logo" className="main-nav-logo-image" />
-				<h1 className="sr-only" data-element-id="headingsMap-0">
-					Argent Bank
-				</h1>
+				<p className="websitename" data-element-id="headingsMap-0">
+					HRnet
+				</p>
 			</div>
 			<NavBar></NavBar>
 		</header>

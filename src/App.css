@@ -7,7 +7,8 @@ html {
   font-size: 16px;
 }
 
-body, .app {
+body,
+.app {
   margin: 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -17,6 +18,7 @@ body, .app {
       -ms-flex-direction: column;
           flex-direction: column;
   min-height: 100vh;
+  background-color: #e6e6e6;
 }
 
 .title {
@@ -29,6 +31,10 @@ body, .app {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+h1 {
+  color: #6e8614;
 }
 
 .container {
@@ -55,5 +61,22 @@ label {
 
 .address {
   margin-top: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.MuiButton-root, .buttonform {
+  margin: 0.5rem;
+  background-color: #6e8614;
+  padding: 1rem;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  text-decoration: none;
+}
+
+.MuiButton-root:hover, .buttonform:hover {
+  background-color: #91b11b;
 }
 /*# sourceMappingURL=App.css.map */

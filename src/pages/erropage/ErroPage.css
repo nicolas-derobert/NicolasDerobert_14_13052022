@@ -1,5 +1,5 @@
 .errorpage {
-  color: #42b983;
+  color: #6e8614;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -16,7 +16,7 @@
 }
 
 .errorpage h1 {
-  color: #42b983;
+  color: #6e8614;
   font-size: 36rem;
   font-weight: 700;
   margin: 0;
@@ -30,6 +30,6 @@
 
 .errorpage a {
   font-size: 2.25rem;
-  color: #42b983;
+  color: #6e8614;
 }
 /*# sourceMappingURL=ErroPage.css.map */

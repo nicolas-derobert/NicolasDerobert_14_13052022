@@ -1,0 +1,28 @@
+@import "../../assets/style/variables.scss";
+@import "../../assets/style/mixin.scss";
+
+.navbar {
+	display: flex;
+	flex-flow: row nowrap;
+	gap: 1rem;
+	a,
+	.MuiButton-root {
+		font-weight: bold;
+		color: $secondary-color;
+		font-size: 1rem;
+		text-transform: inherit;
+		font-family: $main-font-family;
+		text-decoration: none;
+		&.router-link-exact-active {
+			color: $primary-color;
+			text-decoration: solid;
+		}
+		.main-nav-item {
+			text-decoration: none;
+			margin-right: 0.5rem;
+		}
+		&::hover {
+			text-decoration: underline;
+		}
+	}
+}

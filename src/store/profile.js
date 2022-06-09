@@ -57,10 +57,10 @@ const profileSlice = createSlice({
 			// localStorage.setItem("lastname", action.payload.lastName);
 		},
 		removeProfile(state) {
-			state.firstName = "";
-			state.firstName = "";
-			localStorage.removeItem("firstname");
-			localStorage.removeItem("lastName");
+			// state.firstName = "";
+			// state.firstName = "";
+			// localStorage.removeItem("firstname");
+			// localStorage.removeItem("lastName");
 		},
 	},
 });

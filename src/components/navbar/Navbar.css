@@ -1,0 +1,39 @@
+.navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  gap: 1rem;
+}
+
+.navbar a,
+.navbar .MuiButton-root {
+  font-weight: bold;
+  color: #2c3e50;
+  font-size: 1rem;
+  text-transform: inherit;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  text-decoration: none;
+}
+
+.navbar a.router-link-exact-active,
+.navbar .MuiButton-root.router-link-exact-active {
+  color: #6e8614;
+  -webkit-text-decoration: solid;
+          text-decoration: solid;
+}
+
+.navbar a .main-nav-item,
+.navbar .MuiButton-root .main-nav-item {
+  text-decoration: none;
+  margin-right: 0.5rem;
+}
+
+.navbar a::hover,
+.navbar .MuiButton-root::hover {
+  text-decoration: underline;
+}
+/*# sourceMappingURL=Navbar.css.map */
