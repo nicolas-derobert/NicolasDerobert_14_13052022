@@ -1,20 +1,8 @@
-import React, { Fragment, useRef, useState } from "react";
-// import Jumbotron from "../../components/jumbotron/Jumbotron";
-// import Gallery from "../../layouts/gallery/Gallery";
+import React, { Fragment } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-import DatePicker from "react-datepicker";
-import { CustomMessageModal } from "custom-message-react-modal";
-import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
-import { useDispatch } from "react-redux";
-import { authProfile } from "../../store/profile";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { states } from "../../assets/data/state";
-import { departmentOptions } from "../../assets/data/departmentOptions";
 import EmployeeForm from "../../components/employeeform/EmployeeForm";
 import "./Home.css";
-
 
 function Home() {
 	return (
