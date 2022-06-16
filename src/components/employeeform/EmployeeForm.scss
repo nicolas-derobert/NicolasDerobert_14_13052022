@@ -1,14 +1,24 @@
 @import "../../assets/style/variables.scss";
 @import "../../assets/style/mixin.scss";
 
-.MuiButton-root, .buttonform {
-	margin: 0.5rem;
-	background-color: $primary-color;
-	padding: 1rem;
-	color: $white-color;
-	border-radius: 0.5rem;
-	text-decoration: none;
+.MuiButton-root,
+.buttonform {
+	margin: 0.5rem!important;
+	background-color: $primary-color!important;
+	padding: 1rem!important;
+	color: $white-color!important;
+	border-radius: 0.5rem!important;
+	text-decoration: none!important;
 	&:hover {
-		background-color: $primary-color-light;
+		background-color: $primary-color-light!important;
 	}
+}
+.errormessage {
+	color: red;
+}
+.form {
+	width: 50%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
 }

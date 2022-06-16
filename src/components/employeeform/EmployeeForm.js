@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import { states } from "../../assets/data/state";
 import { departmentOptions } from "../../assets/data/departmentOptions";
 import Button from "@mui/material/Button";
-import "./EmployeeForm.css"
+import "./EmployeeForm.css";
 
 function EmployeeForm() {
 	const firstNameInputRef = useRef();
@@ -28,52 +28,103 @@ function EmployeeForm() {
 	const statesOptions = states.map(function (obj) {
 		return obj.name;
 	});
-
 	const defaultStatesOptions = statesOptions[0];
 	const defaultDepartementOptions = departmentOptions[0];
 	const [startDate, setStartDate] = useState();
 	const [dateOfBirth, setDateOfBirth] = useState();
 	const [state, setState] = useState(defaultStatesOptions);
 	const [departement, setDepartement] = useState(defaultDepartementOptions);
+
+	const [ageMessage, setAgeMessage] = useState("");
+	const [firstNameMessage, setFirstNameMessage] = useState("");
+	const [lastNameMessage, setLastNameMessage] = useState("");
+	// const checkBirthDate = (date) => {
+	// 	let today = new Date();
+	// 	let age = today - date
+	// 	return date1 < date2;
+
+	// 	if (date)
+	// }
+
+	function checkInputForm() {
+		let formInpuTOk = true;
+		console.log("firstNameInputRef");
+
+		if (typeof dateOfBirth === "undefined") {
+			setAgeMessage("Aucune date de naissance saisie");
+			formInpuTOk = false;
+		}
+		if (getAge(dateOfBirth) < 16) {
+			setAgeMessage("Personne trop jeune pour travailler");
+			formInpuTOk = false;
+		}
+		if (firstNameInputRef.current.value === "") {
+			setFirstNameMessage("Aucun prénom saisi saisie");
+			formInpuTOk = false;
+		}
+
+		if (lastNameInputRef.current.value === "") {
+			setLastNameMessage("Aucun nom saisi saisie");
+			formInpuTOk = false;
+		}
+		return formInpuTOk;
+	}
+	function getAge(date) {
+		var today = new Date();
+		var birthDate = new Date(date);
+		var age = today.getFullYear() - birthDate.getFullYear();
+		var m = today.getMonth() - birthDate.getMonth();
+		if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+			age--;
+		}
+		return age;
+	}
+
 	const submitHandler = (event) => {
-		console.log("essi");
-		console.log(departement);
-		console.log(state);
-		console.log(firstNameInputRef.current.value);
-		console.log(`${lastNameInputRef.current.value}`);
-		console.log(`${departement}`);
-		console.log(`${streetInputRef.current.value}`);
-		console.log(`${cityInputRef.current.value}`);
-		console.log(`${state}`);
-		console.log(`${zipCodeInputRef.current.value}`);
-		console.log(startDate);
 		console.log(dateOfBirth);
-		// if (startDate !== "") {
-		// 	formatedStartDate = startDate.toLocaleDateString("fr");
-		// }
-		// if (startDateOfBirth !== "") {
-		// 	formatedStartDateOfBirth = startDateOfBirth.toLocaleDateString("fr");
-		// }
-		const employee = {
-			firstName: `${firstNameInputRef.current.value}`,
-			lastName: `${lastNameInputRef.current.value}`,
-			startDate: startDate ? `${startDate.toLocaleDateString("fr")}` : ``,
-			department: `${departement}`,
-			dateOfBirth: dateOfBirth ? `${dateOfBirth.toLocaleDateString("fr")}` : ``,
-			street: `${streetInputRef.current.value}`,
-			city: `${cityInputRef.current.value}`,
-			state: `${state}`,
-			zipCode: `${zipCodeInputRef.current.value}`,
-		};
-		const employeesNewArray = employeesArray.slice();
-		employeesNewArray.push(employee);
-		console.log(employeesNewArray);
-		dispatch(
-			authProfile.setProfile({
-				employees: employeesNewArray,
+		console.log(getAge(dateOfBirth));
+		console.log(checkInputForm());
+
+		if (checkInputForm() !== true) {
+			setAgeMessage("Aucune date saisie");
+		} else {
+			setAgeMessage("");
+			console.log("C'est ok");
+			console.log("essi");
+			console.log(departement);
+			console.log(state);
+			console.log(firstNameInputRef.current.value);
+			console.log(`${lastNameInputRef.current.value}`);
+			console.log(`${departement}`);
+			console.log(`${streetInputRef.current.value}`);
+			console.log(`${cityInputRef.current.value}`);
+			console.log(`${state}`);
+			console.log(`${zipCodeInputRef.current.value}`);
+			console.log(startDate);
+			console.log(dateOfBirth);
+			const employee = {
 				firstName: `${firstNameInputRef.current.value}`,
-			})
-		);
+				lastName: `${lastNameInputRef.current.value}`,
+				startDate: startDate ? `${startDate.toLocaleDateString("fr")}` : ``,
+				department: `${departement}`,
+				dateOfBirth: dateOfBirth
+					? `${dateOfBirth.toLocaleDateString("fr")}`
+					: ``,
+				street: `${streetInputRef.current.value}`,
+				city: `${cityInputRef.current.value}`,
+				state: `${state}`,
+				zipCode: `${zipCodeInputRef.current.value}`,
+			};
+			const employeesNewArray = employeesArray.slice();
+			employeesNewArray.push(employee);
+			console.log(employeesNewArray);
+			dispatch(
+				authProfile.setProfile({
+					employees: employeesNewArray,
+					firstName: `${firstNameInputRef.current.value}`,
+				})
+			);
+		}
 	};
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => {
@@ -88,9 +139,11 @@ function EmployeeForm() {
 				<div className="person">
 					<label htmlFor="first-name">First Name</label>
 					<input type="text" id="firstname" required ref={firstNameInputRef} />
-					{/* <input type="text" id="first-name" /> */}
+					<p className="errormessage">{`${firstNameMessage}`}</p>
 					<label htmlFor="last-name">Last Name</label>
 					<input type="text" id="last-name" required ref={lastNameInputRef} />
+					<p className="errormessage">{`${lastNameMessage}`}</p>
+
 					<label htmlFor="date-of-birth">Date of Birth</label>
 					<DatePicker
 						id="date-of-birth"
@@ -98,6 +151,7 @@ function EmployeeForm() {
 						onChange={(date) => setDateOfBirth(date)}
 						// ref={dateOfBirthInputRef}
 					/>
+					<p className="errormessage">{`${ageMessage}`}</p>
 					{/* <input id="date-of-birth" type="text" /> */}
 					<label htmlFor="start-date">Start Date</label>
 					<DatePicker
@@ -107,8 +161,6 @@ function EmployeeForm() {
 						// ref={startDateInputRef}
 					/>
 				</div>
-				{/* <div className="departemen"></div> */}
-				{/* <input type="text" /> */}
 				<fieldset className="address">
 					<legend>Address</legend>
 					<label htmlFor="street">Street</label>

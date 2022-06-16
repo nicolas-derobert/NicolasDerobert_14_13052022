@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAGA,AAAA,CAAC,CAAC;EACD,eAAe,EAAE,IAAI;CAWrB;;AAZD,AAEC,CAFA,CAEA,eAAe,CAAC;EACf,gBAAgB,ECDF,OAAO;EDErB,OAAO,EAAE,IAAI;EACb,KAAK,ECKQ,OAAO;EDJpB,aAAa,EAAE,MAAM;EACrB,eAAe,EAAE,IAAI;CAIrB;;AAXF,AAQE,CARD,CAEA,eAAe,AAMb,MAAM,CAAC;EACP,gBAAgB,ECNG,OAAiB;CDOpC",
+    "mappings": "",
     "sources": [
         "EmployeesList.scss",
         "../../assets/style/variables.scss",

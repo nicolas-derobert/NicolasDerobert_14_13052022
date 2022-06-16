@@ -18,65 +18,6 @@ function Table(props) {
 	const tableDataEmployeesArray = employeesArray.map((o) => ({ ...o }));
 	console.log(tableDataEmployeesArray);
 
-	// const [tableData, setTableData] = useState([
-	// 	{
-	// 		firstName: "Nicolas",
-	// 		lastName: "DEROBERT",
-	// 		dateOfBirth: "",
-	// 		startDate: "",
-	// 		department: "Sales",
-	// 		street: "51 rue du centre",
-	// 		city: "Cruseilles",
-	// 		state: "AL",
-	// 		zipCode: "74350",
-	// 	},
-	// 	{
-	// 		firstName: "Nicolas",
-	// 		lastName: "DEROBERT",
-	// 		dateOfBirth: "",
-	// 		startDate: "",
-	// 		department: "Engineering",
-	// 		street: "51 rue du centre",
-	// 		city: "Cruseilles",
-	// 		state: "KY",
-	// 		zipCode: "74350",
-	// 	},
-	// 	{
-	// 		city: "Cruseilles",
-	// 		dateOfBirth: "undefined",
-	// 		department: "undefined",
-	// 		firstName: "Nicolas",colDefs
-	// 		lastName: "DEROBERT",
-	// 		startDate: "undefined",
-	// 		state: "undefined",
-	// 		street: "51 rue du centre",
-	// 		zipCode: "74350",
-	// 	},
-	// 			{
-	// 		firstName: "Nicolas",
-	// 		lastName: "DEROBERT",
-	// 		dateOfBirth: "05/30/2022",
-	// 		startDate: "",
-	// 		department: "Sales",
-	// 		street: "51 rue du centre",
-	// 		city: "Cruseilles",
-	// 		state: "AL",
-	// 		zipCode: "74350",
-	// 	},
-	// 	// {
-	// 	// 	firstName: "ef",
-	// 	// 	lastName: "feddzs",
-	// 	// 	dateOfBirth: "05/17/2022",
-	// 	// 	startDate: "05/23/2022",
-	// 	// 	department: "Human Resources",
-	// 	// 	street: "51 rue du centre",
-	// 	// 	city: "Cruseilles",
-	// 	// 	state: "AS",
-	// 	// 	zipCode: "74350",
-	// 	// }
-	// ]);
-	// console.log(tableData);
-
 	const [columns] = useState([
 		{ title: "First Name", field: "firstName" },
 		{ title: "Last Name", field: "lastName" },

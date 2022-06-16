@@ -1,13 +1,32 @@
-.MuiButton-root, .buttonform {
-  margin: 0.5rem;
-  background-color: #6e8614;
-  padding: 1rem;
-  color: #ffffff;
-  border-radius: 0.5rem;
-  text-decoration: none;
+.MuiButton-root,
+.buttonform {
+  margin: 0.5rem !important;
+  background-color: #6e8614 !important;
+  padding: 1rem !important;
+  color: #ffffff !important;
+  border-radius: 0.5rem !important;
+  text-decoration: none !important;
 }
 
-.MuiButton-root:hover, .buttonform:hover {
-  background-color: #91b11b;
+.MuiButton-root:hover,
+.buttonform:hover {
+  background-color: #91b11b !important;
 }
-/*# sourceMappingURL=employeeForm.css.map */
+
+.errormessage {
+  color: red;
+}
+
+.form {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+/*# sourceMappingURL=EmployeeForm.css.map */

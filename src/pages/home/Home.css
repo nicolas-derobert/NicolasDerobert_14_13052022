@@ -1,14 +1,1 @@
-.form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row;
-          flex-flow: row;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  width: 80vw;
-  margin-bottom: 3rem;
-}
-/*# sourceMappingURL=Home.css.map */
+/* No CSS *//*# sourceMappingURL=Home.css.map */
