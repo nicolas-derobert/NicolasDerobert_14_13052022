@@ -3,21 +3,11 @@ import { useEffect } from "react";
 import MaterialTable from "material-table";
 import tableIcons from "../../assets/data/MaterialTableIcons";
 import { useSelector } from "react-redux";
-import "./Table.css"
-// import "./EmployeesList.css";
-
-
+import "./Table.css";
 
 function Table(props) {
 	const employeesArray = useSelector((state) => state.profile.employees);
-	const firstNameProfile = useSelector((state) => state.profile.firstName);
-	console.log(firstNameProfile);
-	// const [colDefs, setColDefs] = useState();
-	// const [data, setData] = useState();
-	// const [tableDataEmployeesArray, setTableDataEmployeesArray] = useState();
 	const tableDataEmployeesArray = employeesArray.map((o) => ({ ...o }));
-	console.log(tableDataEmployeesArray);
-
 	const [columns] = useState([
 		{ title: "First Name", field: "firstName" },
 		{ title: "Last Name", field: "lastName" },

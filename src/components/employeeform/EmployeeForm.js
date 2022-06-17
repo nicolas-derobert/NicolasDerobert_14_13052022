@@ -15,15 +15,10 @@ import "./EmployeeForm.css";
 function EmployeeForm() {
 	const firstNameInputRef = useRef();
 	const lastNameInputRef = useRef();
-	// const dateOfBirthInputRef = useRef();
-	// const startDateInputRef = useRef();
-	// const departmentInputRef = useRef();
 	const streetInputRef = useRef();
 	const cityInputRef = useRef();
-	// const stateInputRef = useRef();
 	const zipCodeInputRef = useRef();
 	const dispatch = useDispatch();
-
 	const employeesArray = useSelector((state) => state.profile.employees);
 	const statesOptions = states.map(function (obj) {
 		return obj.name;
@@ -34,22 +29,12 @@ function EmployeeForm() {
 	const [dateOfBirth, setDateOfBirth] = useState();
 	const [state, setState] = useState(defaultStatesOptions);
 	const [departement, setDepartement] = useState(defaultDepartementOptions);
-
 	const [ageMessage, setAgeMessage] = useState("");
 	const [firstNameMessage, setFirstNameMessage] = useState("");
 	const [lastNameMessage, setLastNameMessage] = useState("");
-	// const checkBirthDate = (date) => {
-	// 	let today = new Date();
-	// 	let age = today - date
-	// 	return date1 < date2;
-
-	// 	if (date)
-	// }
 
 	function checkInputForm() {
 		let formInpuTOk = true;
-		console.log("firstNameInputRef");
-
 		if (typeof dateOfBirth === "undefined") {
 			setAgeMessage("Aucune date de naissance saisie");
 			formInpuTOk = false;
@@ -81,55 +66,34 @@ function EmployeeForm() {
 	}
 
 	const submitHandler = (event) => {
-		console.log(dateOfBirth);
-		console.log(getAge(dateOfBirth));
-		console.log(checkInputForm());
+		setAgeMessage("");
 
-		if (checkInputForm() !== true) {
-			setAgeMessage("Aucune date saisie");
-		} else {
-			setAgeMessage("");
-			console.log("C'est ok");
-			console.log("essi");
-			console.log(departement);
-			console.log(state);
-			console.log(firstNameInputRef.current.value);
-			console.log(`${lastNameInputRef.current.value}`);
-			console.log(`${departement}`);
-			console.log(`${streetInputRef.current.value}`);
-			console.log(`${cityInputRef.current.value}`);
-			console.log(`${state}`);
-			console.log(`${zipCodeInputRef.current.value}`);
-			console.log(startDate);
-			console.log(dateOfBirth);
-			const employee = {
+		const employee = {
+			firstName: `${firstNameInputRef.current.value}`,
+			lastName: `${lastNameInputRef.current.value}`,
+			startDate: startDate ? `${startDate.toLocaleDateString("fr")}` : ``,
+			department: `${departement}`,
+			dateOfBirth: dateOfBirth ? `${dateOfBirth.toLocaleDateString("fr")}` : ``,
+			street: `${streetInputRef.current.value}`,
+			city: `${cityInputRef.current.value}`,
+			state: `${state}`,
+			zipCode: `${zipCodeInputRef.current.value}`,
+		};
+		const employeesNewArray = employeesArray.slice();
+		employeesNewArray.push(employee);
+		dispatch(
+			authProfile.setProfile({
+				employees: employeesNewArray,
 				firstName: `${firstNameInputRef.current.value}`,
-				lastName: `${lastNameInputRef.current.value}`,
-				startDate: startDate ? `${startDate.toLocaleDateString("fr")}` : ``,
-				department: `${departement}`,
-				dateOfBirth: dateOfBirth
-					? `${dateOfBirth.toLocaleDateString("fr")}`
-					: ``,
-				street: `${streetInputRef.current.value}`,
-				city: `${cityInputRef.current.value}`,
-				state: `${state}`,
-				zipCode: `${zipCodeInputRef.current.value}`,
-			};
-			const employeesNewArray = employeesArray.slice();
-			employeesNewArray.push(employee);
-			console.log(employeesNewArray);
-			dispatch(
-				authProfile.setProfile({
-					employees: employeesNewArray,
-					firstName: `${firstNameInputRef.current.value}`,
-				})
-			);
-		}
+			})
+		);
 	};
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => {
-		setOpen(true);
-		submitHandler();
+		if (checkInputForm() === true) {
+			setOpen(true);
+			submitHandler();
+		}
 	};
 	const handleClose = () => setOpen(false);
 
@@ -149,16 +113,13 @@ function EmployeeForm() {
 						id="date-of-birth"
 						selected={dateOfBirth}
 						onChange={(date) => setDateOfBirth(date)}
-						// ref={dateOfBirthInputRef}
 					/>
 					<p className="errormessage">{`${ageMessage}`}</p>
-					{/* <input id="date-of-birth" type="text" /> */}
 					<label htmlFor="start-date">Start Date</label>
 					<DatePicker
 						id="start-date"
 						selected={startDate}
 						onChange={(date) => setStartDate(date)}
-						// ref={startDateInputRef}
 					/>
 				</div>
 				<fieldset className="address">
@@ -172,7 +133,6 @@ function EmployeeForm() {
 						options={statesOptions}
 						value={defaultStatesOptions}
 						placeholder="Select an option"
-						// onChange={setState}
 						onChange={(selection) => setState(selection.value)}
 					/>
 					<label htmlFor="zip-code">Zip Code</label>
@@ -184,7 +144,6 @@ function EmployeeForm() {
 						options={departmentOptions}
 						value={defaultDepartementOptions}
 						placeholder="Select an option"
-						// ref={departmentInputRef}
 						onChange={(selection) => setDepartement(selection.value)}
 					/>
 				</div>
