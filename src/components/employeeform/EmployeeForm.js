@@ -12,8 +12,6 @@ import { departmentOptions } from "../../assets/data/departmentOptions";
 import Button from "@mui/material/Button";
 import "./EmployeeForm.css";
 
-
-
 function EmployeeForm() {
 	const firstNameInputRef = useRef();
 	const lastNameInputRef = useRef();
@@ -40,19 +38,30 @@ function EmployeeForm() {
 		if (typeof dateOfBirth === "undefined") {
 			setAgeMessage("Aucune date de naissance saisie");
 			formInpuTOk = false;
+			console.log("Aucune date de naissance saisie");
 		}
+
 		if (getAge(dateOfBirth) < 16) {
 			setAgeMessage("Personne trop jeune pour travailler");
 			formInpuTOk = false;
+			console.log("Personne trop jeune pour travailler");
 		}
+		if (formInpuTOk === true) {
+			setAgeMessage("");
+		}
+
 		if (firstNameInputRef.current.value === "") {
 			setFirstNameMessage("Aucun prénom saisi saisie");
 			formInpuTOk = false;
+		} else {
+			setFirstNameMessage("");
 		}
 
 		if (lastNameInputRef.current.value === "") {
 			setLastNameMessage("Aucun nom saisi saisie");
 			formInpuTOk = false;
+		} else {
+			setLastNameMessage("");
 		}
 		return formInpuTOk;
 	}
@@ -66,10 +75,7 @@ function EmployeeForm() {
 		}
 		return age;
 	}
-
 	const submitHandler = (event) => {
-		setAgeMessage("");
-
 		const employee = {
 			firstName: `${firstNameInputRef.current.value}`,
 			lastName: `${lastNameInputRef.current.value}`,
@@ -98,23 +104,44 @@ function EmployeeForm() {
 		}
 	};
 	const handleClose = () => setOpen(false);
-
+	const handleFirstName = (date) => {
+		checkInputForm();
+	};
+	const handleLastName = (date) => {
+		checkInputForm();
+	};
+	const handleBirthDate = async (date) => {
+		await setDateOfBirth(date);
+		checkInputForm();
+	};
 	return (
 		<Fragment>
 			<form action="#" id="create-employee" className="form">
 				<div className="person">
 					<label htmlFor="first-name">First Name</label>
-					<input type="text" id="firstname" required ref={firstNameInputRef} />
+					<input
+						type="text"
+						id="firstname"
+						required
+						ref={firstNameInputRef}
+						onChange={handleFirstName}
+					/>
 					<p className="errormessage">{`${firstNameMessage}`}</p>
 					<label htmlFor="last-name">Last Name</label>
-					<input type="text" id="last-name" required ref={lastNameInputRef} />
+					<input
+						type="text"
+						id="last-name"
+						required
+						ref={lastNameInputRef}
+						onChange={handleLastName}
+					/>
 					<p className="errormessage">{`${lastNameMessage}`}</p>
 
 					<label htmlFor="date-of-birth">Date of Birth</label>
 					<DatePicker
 						id="date-of-birth"
 						selected={dateOfBirth}
-						onChange={(date) => setDateOfBirth(date)}
+						onChange={handleBirthDate}
 					/>
 					<p className="errormessage">{`${ageMessage}`}</p>
 					<label htmlFor="start-date">Start Date</label>
