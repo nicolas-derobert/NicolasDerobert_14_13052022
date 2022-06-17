@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, Suspense  } from "react";
 import { useEffect } from "react";
-import MaterialTable from "material-table";
+// import MaterialTable from "material-table";
 import tableIcons from "../../assets/data/MaterialTableIcons";
 import { useSelector } from "react-redux";
 import "./Table.css";
+const MaterialTable = React.lazy(() => import("material-table"));
 
 function Table(props) {
 	const employeesArray = useSelector((state) => state.profile.employees);
@@ -25,15 +26,17 @@ function Table(props) {
 	return (
 		<div className="table">
 			<div style={{ maxWidth: "80%", margin: "0rem auto" }}>
-				<MaterialTable
-					title={props.title}
-					data={tableDataEmployeesArray}
-					columns={columns}
-					icons={tableIcons}
-					options={{
-						search: true,
-					}}
-				></MaterialTable>
+				<Suspense fallback={<div>Chargement...</div>}>
+					<MaterialTable
+						title={props.title}
+						data={tableDataEmployeesArray}
+						columns={columns}
+						icons={tableIcons}
+						options={{
+							search: true,
+						}}
+					></MaterialTable>
+				</Suspense>
 			</div>
 		</div>
 	);

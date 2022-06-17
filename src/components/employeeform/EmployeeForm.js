@@ -12,6 +12,8 @@ import { departmentOptions } from "../../assets/data/departmentOptions";
 import Button from "@mui/material/Button";
 import "./EmployeeForm.css";
 
+
+
 function EmployeeForm() {
 	const firstNameInputRef = useRef();
 	const lastNameInputRef = useRef();
