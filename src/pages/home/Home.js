@@ -8,11 +8,7 @@ function Home() {
 	return (
 		<Fragment>
 			<section>
-				{/* <div className="">
-					<h1>HRnet</h1>
-				</div> */}
 				<div className="container">
-					{/* <Link to="/employee-list.html">View Current Employees</Link> */}
 					<h1>Create Employee</h1>
 					<EmployeeForm></EmployeeForm>
 				</div>

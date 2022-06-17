@@ -1,14 +1,13 @@
 @import "../../assets/style/variables.scss";
 @import "../../assets/style/mixin.scss";
 
-
 header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 5px 20px;
 	box-shadow: 1px 1px 10px $primary-color;
-	background-color:$white-color;
+	background-color: $white-color;
 	.main-nav-logo {
 		display: flex;
 		align-items: center;
@@ -17,9 +16,8 @@ header {
 			width: 100px;
 		}
 	}
-	
-	.websitename{
+
+	.websitename {
 		font-size: 2rem;
-		
 	}
 }
