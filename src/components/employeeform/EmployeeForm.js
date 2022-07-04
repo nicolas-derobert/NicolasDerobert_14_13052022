@@ -104,15 +104,10 @@ function EmployeeForm() {
 		}
 	};
 	const handleClose = () => setOpen(false);
-	const handleFirstName = (date) => {
-		checkInputForm();
-	};
-	const handleLastName = (date) => {
-		checkInputForm();
-	};
+
 	const handleBirthDate = async (date) => {
 		await setDateOfBirth(date);
-		checkInputForm();
+		// checkInputForm();
 	};
 	return (
 		<Fragment>
@@ -124,7 +119,6 @@ function EmployeeForm() {
 						id="firstname"
 						required
 						ref={firstNameInputRef}
-						onChange={handleFirstName}
 					/>
 					<p className="errormessage">{`${firstNameMessage}`}</p>
 					<label htmlFor="last-name">Last Name</label>
@@ -133,7 +127,6 @@ function EmployeeForm() {
 						id="last-name"
 						required
 						ref={lastNameInputRef}
-						onChange={handleLastName}
 					/>
 					<p className="errormessage">{`${lastNameMessage}`}</p>
 
